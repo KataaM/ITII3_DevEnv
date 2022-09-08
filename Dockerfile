@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM openjdk:8-jdk-alpine
 
-LABEL maintainer "eric.muellenbach@yncrea.fr"
+LABEL maintainer "gregory.fazzino@gmail.com"
 
-ADD app.js .
+COPY springBootApp/docker-message-server-1.0.0.jar message-server-1.0.0.jar
 
-ENTRYPOINT [ "node", "app.js" ]
+ENTRYPOINT ["java","-jar","/message-server-1.0.0.jar"]

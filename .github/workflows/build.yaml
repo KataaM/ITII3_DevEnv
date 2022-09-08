@@ -39,6 +39,5 @@ jobs:
           with:
             context: .
             push: true
-            tags: user/app:latest
+            tags: kataaam/mywebserver:latest
             tag_with_sha: true
-            repository: kataaam/mywebserver

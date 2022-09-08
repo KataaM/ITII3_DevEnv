@@ -16,9 +16,10 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        - name: Install NPM dependencies
-          run: |
-            npm install --production --unsafe-perm
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+        - run: npm ci --production
             
           #setup-qemu action can be useful if you want to add emulation support with QEMU to be able to build against more platforms 
         - name: Set up QEMU 

@@ -10,6 +10,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
+        - name: SonarCloud Scan
+          uses: sonarsource/sonarcloud-github-action@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         - name: build-push
           uses: docker/build-push-action@v1
           with:
@@ -18,9 +23,3 @@ jobs:
             registry: docker.io
             repository: kataaam/mywebserver
             tag_with_sha: true
-        
-        - name: SonarCloud Scan
-          uses: sonarsource/sonarcloud-github-action@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
